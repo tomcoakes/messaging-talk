@@ -24,8 +24,91 @@
 	<body>
 		<div class="reveal">
 			<div class="slides">
-				<section>Slide 1</section>
-				<section>Slide 2</section>
+				<section>
+					<h3>Introduction to Messaging as an integration pattern</h3>
+					<p>Some stuff I learned reading through Gregor Hohpe's Enterprise Integration Patterns</p>
+				</section>
+
+
+				<section>
+					<section><h3>Four Main Approaches to Integrating Software</h3></section>
+					<section>
+						<ul>
+							<li>File Transfer</li>
+							<li>Shared Database</li>
+							<li>Remote Procedure Invocation</li>
+							<li>Messaging</li>
+						</ul>
+					</section>
+				</section>
+
+				<section>
+					<section><h3>What is Messaging?</h3></section>
+					<section>
+						A <i>producer</i> sends a <i>message</i> to a <i>channel</i>, which is then ready to be picked up by a <i>consumer</i>
+					</section>
+					<section>
+						Allows you to transfer packets of data frequently, immediately, reliably and asynchronously, using customisable formats.
+					</section>
+				</section>
+
+
+				<section>
+					<section><h3>So.. Why Use Messaging Over Others?</h3></section>
+					<section>
+						<h4>Yay!</h4>
+						<ul>
+							<li>More immediate than file transfer</li>
+							<li>Better encapsulated than shared database</li>
+							<li>More reliable than remote procedure invocation</li>
+							<li>Platform/language integration</li>
+							<li>Asynchronous communication!</li>
+							<li>..and more</li>
+						</ul>
+					</section>
+					<section>
+						<h4>N'aww</h4>
+						<ul>
+							<li>Can be a complex programming model</li>
+							<li>Sequence issues</li>
+							<li>Asynchronicity isn't always desired or useful</li>
+							<li>Performance cost of processing and sending/receiving messages</li>
+							<li>Limited platform support</li>
+							<li>Vendor lock-in</li>
+						</ul>
+					</section>
+				</section>
+
+
+				<section>
+					<section>
+						<h3>Integration Applications</h3>
+						Independent applications that can run by themselves but coordinate with each other in a loosely coupled way.
+						Don't need to wait for a response when communicating, as they can perform concurrent tasks or fire and forget.
+					</section>
+				</section>
+
+
+				<section>
+					<section><h3>Components of a Messaging System</h3></section>
+					<section>Channels</section>
+					<section>Messages</section>
+					<section>Multi-step delivery</section>
+					<section>Routing</section>
+					<section>Transformation</section>
+					<section>Endpoints</section>
+				</section>
+
+				<section><h2>Common Channel Types</h2></section>
+
+				<section>
+					<section><h3>Point-to-Point Channels</h3></section>
+					<section>
+						<p>(image)</p>
+						Sending a message on a point-to-point channel ensures only one receiver consumes any given message.
+						There can be multiple consumers ready to read off the channel, but the channel removes the message from the channel as soon as it is picked up so it can’t be picked up by something else.
+					</section>
+				</section>
 			</div>
 		</div>
 
