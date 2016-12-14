@@ -26,7 +26,6 @@
 			<div class="slides">
 				<section>
 					<h3>Introduction to Messaging as an integration pattern</h3>
-					<p>Some stuff I learned reading through Gregor Hohpe's Enterprise Integration Patterns</p>
 				</section>
 
 
@@ -54,7 +53,7 @@
 
 
 				<section>
-					<section><h3>So.. Why Use Messaging Over Others?</h3></section>
+					<section><h3>Why Use Messaging Over Other Approaches?</h3></section>
 					<section>
 						<h4>Yay!</h4>
 						<ul>
@@ -63,7 +62,6 @@
 							<li>More reliable than remote procedure invocation</li>
 							<li>Platform/language integration</li>
 							<li>Asynchronous communication!</li>
-							<li>..and more</li>
 						</ul>
 					</section>
 					<section>
@@ -80,35 +78,92 @@
 				</section>
 
 
-				<section>
-					<section>
-						<h3>Integration Applications</h3>
-						Independent applications that can run by themselves but coordinate with each other in a loosely coupled way.
-						Don't need to wait for a response when communicating, as they can perform concurrent tasks or fire and forget.
-					</section>
-				</section>
-
 
 				<section>
 					<section><h3>Components of a Messaging System</h3></section>
-					<section>Channels</section>
-					<section>Messages</section>
-					<section>Multi-step delivery</section>
-					<section>Routing</section>
-					<section>Transformation</section>
-					<section>Endpoints</section>
+					<section>
+						<p>Channels</p>
+						<img src="./imgs/channel.gif" alt="">
+					</section>
+					<section>
+						<p>Messages</p>
+						<img src="./imgs/message.gif" alt="">
+					</section>
+					<section>
+						<p>Multi-step delivery</p>
+						<img src="./imgs/multi-step-delivery.gif" alt="">
+					</section>
+					<section>
+						<p>Routing</p>
+						<img src="./imgs/routing.gif" alt="">
+					</section>
+					<section>
+						<p>Transformation</p>
+						<img src="./imgs/transformations.gif" alt="">
+					</section>
+					<section>
+						<p>Endpoints</p>
+						<img src="./imgs/endpoints.gif" alt="">
+					</section>
 				</section>
 
-				<section><h2>Common Channel Types</h2></section>
+				<section><h2>Common Channel Patterns</h2></section>
 
 				<section>
 					<section><h3>Point-to-Point Channels</h3></section>
 					<section>
-						<p>(image)</p>
+						<p><img src="./imgs/PointToPointSolution.gif" alt=""></p>
 						Sending a message on a point-to-point channel ensures only one receiver consumes any given message.
 						There can be multiple consumers ready to read off the channel, but the channel removes the message from the channel as soon as it is picked up so it can’t be picked up by something else.
 					</section>
+					<section>
+						Idempotent
+					</section>
 				</section>
+
+				<section>
+					<section><h3>Worker Queues</h3></section>
+					<section>
+						<!-- <p><img src="./imgs/worker-queue.gif" alt=""></p> -->
+						<p><img src="./imgs/message-dispatcher.gif" alt=""></p>
+						In this model, messages are "tasks" or "command messages" as opposed to documents.
+						By increasing the number of consumers on the other end of the queue, you can parallelise work and improve the speed of resource intensive tasks.
+					</section>
+					<section>
+						Acknowledgement and Prefetch
+					</section>
+					<section>
+						Resilience
+					</section>
+				</section>
+
+				<section>
+					<section><h3>Publish-Subscribe Channels</h3></section>
+					<section>
+						<p><img src="./imgs/publish-subscribe.gif" alt=""></p>
+						This is where we introduce the concept of an exchange. In this model, producers aren't aware of whether or not the message will even end up on a queue, but rabbit will just broadcast to all connected queues.
+					</section>
+					<section>
+						<h4>Exchange Types</h4>
+							<ul>
+								<li>direct</li>
+								<li><b>fanout</b></li>
+								<li>topic</li>
+								<li>headers</li>
+							</ul>
+					</section>
+					<section>
+						Queues are bound to an exchange
+					</section>
+				</section>
+
+				<section>
+					<section><h3>Routing</h3></section>
+					<section>
+						<p><img src="./imgs/routing.gif" alt=""></p>
+						With a fanout exchange, a consumer is ready and willing to pick up any messages that are published to the channel.
+						If we're only interested in a subset of messages, rabbit can use binding keys to decide which messages to dispatch to which queues.
+					</section>
 			</div>
 		</div>
 
